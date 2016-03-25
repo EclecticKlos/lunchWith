@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('lunchWith.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
