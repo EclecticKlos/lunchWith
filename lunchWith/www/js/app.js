@@ -19,54 +19,70 @@ angular.module('lunchWith', ['ionic', 'lunchWith.controllers', 'lunchWith.servic
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('tab', {
-    url: '/tab',
+  //   .state('tab', {
+  //   url: '/tab',
+  //   abstract: true,
+  //   templateUrl: 'templates/tabs.html'
+  // })
+
+
+  .state('app', {
+    url: '/app',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/apps.html'
   })
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
+  .state('/', {
+    url: '/login',
+    views: {
+      'app-login': {
+        templateUrl: 'templates/linkedin-account-creation.html',
+        controller: 'LinkedinCtrl'
+      }
+    }
+  })
+
+  .state('app.dash', {
     url: '/dash',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
+      'app-dash': {
+        templateUrl: 'templates/app-dash.html',
         controller: 'DashCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
+  .state('app.chats', {
       url: '/chats',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
+        'app-chats': {
+          templateUrl: 'templates/app-chats.html',
           controller: 'ChatsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
+    .state('app.chat-detail', {
       url: '/chats/:chatId',
       views: {
-        'tab-chats': {
+        'app-chats': {
           templateUrl: 'templates/chat-detail.html',
           controller: 'ChatDetailCtrl'
         }
       }
     })
-
-  .state('tab.account', {
+  .state('app.account', {
     url: '/account',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
+      'app-account': {
+        templateUrl: 'templates/app-account.html',
         controller: 'AccountCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/');
 
 });

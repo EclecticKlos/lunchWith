@@ -2,6 +2,10 @@ angular.module('lunchWith.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
+.controller('LinkedinCtrl', function($scope) {
+  $scope.buttonName = "Create account with LinkedIn";
+})
+
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
