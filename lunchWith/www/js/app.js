@@ -25,15 +25,6 @@ angular.module('lunchWith', ['ionic', 'lunchWith.controllers', 'lunchWith.servic
   //   templateUrl: 'templates/tabs.html'
   // })
 
-
-  .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/apps.html'
-  })
-
-  // Each tab has its own nav history stack:
-
   .state('/', {
     url: '/login',
     views: {
@@ -43,6 +34,15 @@ angular.module('lunchWith', ['ionic', 'lunchWith.controllers', 'lunchWith.servic
       }
     }
   })
+
+
+  .state('app', {
+    url: '/app',
+    abstract: true,
+    templateUrl: 'templates/apps.html'
+  })
+
+  // Each tab has its own nav history stack:
 
   .state('app.dash', {
     url: '/dash',
@@ -83,6 +83,6 @@ angular.module('lunchWith', ['ionic', 'lunchWith.controllers', 'lunchWith.servic
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/login');
 
 });
