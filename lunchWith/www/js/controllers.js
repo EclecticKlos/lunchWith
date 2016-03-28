@@ -9,15 +9,17 @@ angular.module('lunchWith.controllers', [])
   $scope.linkedinLogin = function(clientId,
     clientSecret) {
 
-    var state = "asdf";
-        $cordovaOauth.linkedin(clientId, clientSecret, appScope, state)
-        .then(function(response) {
-          console.log(response);
-        })
-        .catch(function(error) {
-          console.log(error);
-        })
-    }
+    // var state = "asdf";
+    var APPKEY = '';
+    var SECRET = '';
+    $cordovaOauth.linkedin(APPKEY, SECRET, ["r_emailaddress"], "randomstring")
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
+  }
 
 })
 
