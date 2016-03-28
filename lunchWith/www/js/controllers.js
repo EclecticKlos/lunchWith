@@ -2,8 +2,23 @@ angular.module('lunchWith.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('LinkedinCtrl', function($scope) {
+.controller('LinkedinCtrl', function($scope, $cordovaOauth) {
+
   $scope.buttonName = "Create account with LinkedIn";
+
+  $scope.linkedinLogin = function(clientId,
+    clientSecret) {
+
+    var state = "asdf";
+        $cordovaOauth.linkedin(clientId, clientSecret, appScope, state)
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    }
+
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
