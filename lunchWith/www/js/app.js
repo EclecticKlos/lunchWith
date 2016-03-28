@@ -1,4 +1,4 @@
-angular.module('lunchWith', ['ionic', 'lunchWith.controllers', 'lunchWith.services'])
+angular.module('lunchWith', ['ionic', 'ngCordova', 'ngCordovaOauth', 'lunchWith.controllers', 'lunchWith.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
