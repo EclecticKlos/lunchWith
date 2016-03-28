@@ -47,6 +47,27 @@ angular.module('lunchWith.services', [])
       return null;
     }
   };
-});
+})
+
+.factory('LinkedinAPIRequest', function($http) {
+
+  var getUserDataFromLinkedin = function(token) {
+    var reqUrl = "https://api.linkedin.com/v1/people/~?oauth2_access_token=" + token + "&format=json"
+
+    $http.get(reqUrl)
+    .then(function(response) {
+      console.log(response);
+      return response;
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+
+  };
 
 
+  return {
+    getUserDataFromLinkedin: getUserDataFromLinkedin
+  }
+})
+;
