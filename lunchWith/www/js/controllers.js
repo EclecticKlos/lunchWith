@@ -2,7 +2,7 @@ angular.module('lunchWith.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('LinkedinCtrl', function($scope, $cordovaOauth) {
+.controller('LinkedinCtrl', function($scope, $cordovaOauth, LinkedinAPIRequest) {
 
   $scope.buttonName = "Create account with LinkedIn";
 
@@ -10,11 +10,14 @@ angular.module('lunchWith.controllers', [])
     clientSecret) {
 
     // var state = "asdf";
-    var APPKEY = '';
-    var SECRET = '';
+    var APPKEY = '75iwyhxrlrm0mc';
+    var SECRET = 'bv1mBnOpO7yOcJtt';
+
     $cordovaOauth.linkedin(APPKEY, SECRET, ["r_emailaddress"], "randomstring")
     .then(function(response) {
       console.log(response);
+      LinkedinAPIRequest.getUserDataFromLinkedin(response.access_token);
+
     })
     .catch(function(error) {
       console.log(error);
