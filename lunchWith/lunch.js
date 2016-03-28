@@ -1,9 +1,8 @@
 angular.module('lunchWith.lunch', [])
 
 .factory('LunchService', function() {
-  // var client_id = 75iwyhxrlrm0mc;
-  var clientSecret = "bv1mBnOpO7yOcJtt";
 
+  var clientSecret = '';
 
   return {
     clientSecret: clientSecret
