@@ -19,13 +19,15 @@ angular.module('lunchWith', ['ionic', 'ngCordova', 'ngCordovaOauth', 'lunchWith.
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-  //   .state('tab', {
-  //   url: '/tab',
-  //   abstract: true,
-  //   templateUrl: 'templates/tabs.html'
-  // })
+  .state('app', {
+    url: '/app',
+    abstract: true,
+    templateUrl: 'templates/apps.html'
+  })
 
-  .state('/', {
+  // Each tab has its own nav history stack:
+
+   .state('app.login', {
     url: '/login',
     views: {
       'app-login': {
@@ -34,15 +36,6 @@ angular.module('lunchWith', ['ionic', 'ngCordova', 'ngCordovaOauth', 'lunchWith.
       }
     }
   })
-
-
-  .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/apps.html'
-  })
-
-  // Each tab has its own nav history stack:
 
   .state('app.dash', {
     url: '/dash',
@@ -83,6 +76,6 @@ angular.module('lunchWith', ['ionic', 'ngCordova', 'ngCordovaOauth', 'lunchWith.
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/app/login');
 
 });
