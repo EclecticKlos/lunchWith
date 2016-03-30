@@ -1,0 +1,20 @@
+<ion-modal-view>
+  
+
+  <ion-content has-subheader="false">
+    <div class="row">
+      <div class="col">
+        <h2>Enter the zip code where you want to do lunch</h2>
+      </div>
+    </div>
+    <div class="list list-inset">
+      <label class="item item-input">
+      <span class="input-label">Zip Code</span>
+        <input type="tel" ng-model="lunchZip" min="5" max="5">
+      </label>
+      <button class="button button-block button-outline button-positive" ng-click="closeLunchZip()">Submit</button>
+
+    </div>
+
+  </ion-content>
+</ion-modal-view>
