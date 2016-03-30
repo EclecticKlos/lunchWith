@@ -1,4 +1,4 @@
-angular.module('lunchWith', ['ionic', 'ngCordova', 'ngCordovaOauth', 'lunchWith.controllers', 'lunchWith.services'])
+angular.module('lunchWith', ['ionic', 'ngCordova', 'ngCordovaOauth', 'lunchWith.controllers', 'lunchWith.services', 'lunchWith.directives'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -37,12 +37,12 @@ angular.module('lunchWith', ['ionic', 'ngCordova', 'ngCordovaOauth', 'lunchWith.
     }
   })
 
-  .state('app.dash', {
-    url: '/dash',
+  .state('app.foodies', {
+    url: '/foodies',
     views: {
-      'app-dash': {
-        templateUrl: 'templates/app-dash.html',
-        controller: 'DashCtrl'
+      'app-foodies': {
+        templateUrl: 'templates/app-foodies.html',
+        controller: 'FoodiesCtrl'
       }
     }
   })
