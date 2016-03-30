@@ -2,14 +2,21 @@ angular.module('lunchWith.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('LinkedinCtrl', function($scope, $cordovaOauth, LinkedinAPIRequest) {
+.controller('LinkedinCtrl', function($scope, $cordovaOauth, $ionicModal, $cordovaKeyboard, LinkedinAPIRequest) {
+
+    // Zipcode Modal
+  $ionicModal.fromTemplateUrl('templates/lunch-zip.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal){
+    $scope.modal = modal;
+  });
 
   $scope.buttonName = "Create account with LinkedIn";
 
   $scope.linkedinLogin = function(clientId,
     clientSecret) {
 
-    // var state = "asdf";
     var APPKEY = '75iwyhxrlrm0mc';
     var SECRET = 'bv1mBnOpO7yOcJtt';
 
@@ -17,12 +24,24 @@ angular.module('lunchWith.controllers', [])
     .then(function(response) {
       console.log(response);
       LinkedinAPIRequest.getUserDataFromLinkedin(response.access_token);
-
+      // $scope.modal.show();
     })
     .catch(function(error) {
       console.log(error);
-    })
-  }
+    });
+  };
+
+  $scope.openLunchZip = function () {
+    $scope.modal.show();
+  };
+
+  $scope.closeLunchZip = function () {
+    // post model to api
+    // $scope.lunchZip
+    console.log($scope.lunchZip);
+    $scope.modal.hide();
+    $scope.modal.remove();
+  };
 
 })
 
