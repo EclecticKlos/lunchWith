@@ -1,6 +1,5 @@
 angular.module('lunchWith.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
 
 .controller('LinkedinCtrl', function($scope, $cordovaOauth, $ionicModal, $cordovaKeyboard, LinkedinAPIRequest) {
 
@@ -42,6 +41,52 @@ angular.module('lunchWith.controllers', [])
     $scope.modal.hide();
     $scope.modal.remove();
   };
+
+})
+
+.controller('FoodiesCtrl', function($scope) {
+  $scope.foodieList =
+    {
+      "foodie1": {
+        "linkedinId": "jHi2RNpp23",
+        "firstName": "Thuong",
+        "lastName": "Ho",
+        "headline": "Web Apps Developer",
+        "url": "https://www.linkedin.com/profile/view?id=AAoAAAOxcOwBxJIttVPHY0yu11x4dFFM6-_mzMc&authType=name&authToken=YfxC&trk=api*a3227641*s3301901*",
+        "numConnections": 314,
+        "pictureUrl": "https://media.licdn.com/mpr/mprx/0_GoniwO0q-HTVQ1mQGd5ywgU6-INqE1mQ8DCywgyqDa8XvBM6m2QfLjHVp5qIdq7EidNjkVm14yj_"
+      }
+    },
+    {
+      "foodie2": {
+        "linkedinId": "jHi2RNppDF",
+        "firstName": "Bob",
+        "lastName": "Dole",
+        "headline": "Web Apps Developer",
+        "url": "https://www.linkedin.com/profile/view?id=AAoAAAOxcOwBxJIttVPHY0yu11x4dFFM6-_mzMc&authType=name&authToken=YfxC&trk=api*a3227641*s3301901*",
+        "numConnections": 14,
+        "pictureUrl": "https://media.licdn.com/mpr/mprx/0_GoniwO0q-HTVQ1mQGd5ywgU6-INqE1mQ8DCywgyqDa8XvBM6m2QfLjHVp5qIdq7EidNjkVm14yj_"
+      }
+    },
+    {
+      "foodie3": {
+        "linkedinId": "jHi2RNppLe",
+        "firstName": "Hewlett",
+        "lastName": "Packard",
+        "headline": "Web Apps Developer",
+        "url": "https://www.linkedin.com/profile/view?id=AAoAAAOxcOwBxJIttVPHY0yu11x4dFFM6-_mzMc&authType=name&authToken=YfxC&trk=api*a3227641*s3301901*",
+        "numConnections": 31,
+        "pictureUrl": "https://media.licdn.com/mpr/mprx/0_GoniwO0q-HTVQ1mQGd5ywgU6-INqE1mQ8DCywgyqDa8XvBM6m2QfLjHVp5qIdq7EidNjkVm14yj_"
+      }
+    }
+
+    $scope.currentFoodie = "foodie3";
+    $scope.nextProfile = function() {
+      counter++;
+      //0
+      var currentFoodie = foodiesList[counter];
+
+    };
 
 })
 
