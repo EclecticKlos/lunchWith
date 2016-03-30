@@ -4,12 +4,21 @@ angular.module('lunchWith.controllers', [])
 
 .controller('LinkedinCtrl', function($scope, $cordovaOauth, LinkedinAPIRequest) {
 
+  var ourDB = {
+    "firstName": "Dan",
+    "headline": "Software Engineer",
+    "id": "PITFj9VYrv",
+    "lastName": "Klos",
+    "siteStandardProfileRequest": {
+      "url": "https://www.linkedin.com/profile/view?id=AAoAAAFR-m0BtzbTOd44cxNKv0H_Riah40YFf6Y&authType=name&authToken=o2V3&trk=api*a3227641*s3301901*"
+    }
+  };
+
   $scope.buttonName = "Create account with LinkedIn";
 
   $scope.linkedinLogin = function(clientId,
     clientSecret) {
 
-    // var state = "asdf";
     var APPKEY = '75iwyhxrlrm0mc';
     var SECRET = 'bv1mBnOpO7yOcJtt';
 
