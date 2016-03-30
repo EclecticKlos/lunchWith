@@ -1,6 +1,6 @@
 angular.module('lunchWith.directives', [])
 
-.directive('foodieCard', function() {
+.directive('profileCard', function() {
   return {
     restrict: 'AE',
     templateUrl: 'templates/profile-card.html'
