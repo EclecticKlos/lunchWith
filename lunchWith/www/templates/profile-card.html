@@ -5,8 +5,11 @@
 </div>
 
 <div class="item item-body">
-  <p>
+  <p ng-if="currentFoodie.lunchZip">
     {{currentFoodie.bio}}
+  </p>
+  <p ng-if="!currentFoodie.lunchZip">
+    "Keep checking back!"
   </p>
   <button class="button button-assertive" ng-click="nextProfile()">No</button>
   <button class="button button-balanced">Yes</button>
