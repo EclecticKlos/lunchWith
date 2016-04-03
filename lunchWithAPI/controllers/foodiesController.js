@@ -6,7 +6,10 @@
         var post = function (req, res) {
             var foodie = new Foodie(req.body);
 
-            console.log('POST foodie', foodie);
+            foodie.save();
+            // 201 Created
+            res.status(201);
+            res.send(foodie);
         };
 
         var get = function (req, res) {
@@ -18,7 +21,8 @@
 
             Foodie.find(query, function (err, foodies) {
                 if (err) {
-                    res.status(500).send(err);
+                    res.status(500);
+                    res.send(err);
                 } else {
                     res.json(foodies);
                 }

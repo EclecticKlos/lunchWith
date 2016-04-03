@@ -24,7 +24,7 @@
                 PORT: 8000
             },
             ignore: ['./node_modules/**'],
-            tasks: ['lint', 'test']
+            tasks: ['lint']
         })
             .on('restart', function () {
                 console.log('Restarting...');
