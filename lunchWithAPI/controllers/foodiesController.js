@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var foodieController = function (Foodie) {
+    var foodiesController = function (Foodie) {
 
         var post = function (req, res) {
             var foodie = new Foodie(req.body);
@@ -12,9 +12,9 @@
         var get = function (req, res) {
             var query = {};
 
-            if (req.query.lunchZip) {
-              query.lunchZip = req.query.lunchZip;
-            }
+            // if (req.query.lunchZip) {
+            //   query.lunchZip = req.query.lunchZip;
+            // }
 
             Foodie.find(query, function (err, foodies) {
                 if (err) {
@@ -26,11 +26,11 @@
         };
 
         return {
-          post: post,
-          get: get
+            post: post,
+            get: get
         }
 
     };
 
-    module.exports = foodieController;
+    module.exports = foodiesController;
 }());

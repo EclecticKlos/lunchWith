@@ -5,11 +5,11 @@
 
     var routes = function (Foodie) {
         var foodieRouter = express.Router();
-        var foodieController = require('../controllers/foodieController')(Foodie);
+        var foodiesController = require('../controllers/foodiesController')(Foodie);
 
         foodieRouter.route('/')
-            .post(foodieController.post)
-            .get(foodieController.get);
+            .post(foodiesController.post)
+            .get(foodiesController.get);
 
         return foodieRouter;
     };
