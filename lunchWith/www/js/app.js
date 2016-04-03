@@ -1,4 +1,12 @@
-angular.module('lunchWith', ['ionic', 'ngCordova', 'ngCordovaOauth', 'lunchWith.controllers', 'lunchWith.services', 'lunchWith.directives'])
+angular.module('lunchWith', [
+  'ionic',
+  'ngCordova',
+  'ngCordovaOauth',
+  'lunchWith.controllers',
+  'lunchWith.services',
+  'lunchWith.directives',
+  'gajus.swing'
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

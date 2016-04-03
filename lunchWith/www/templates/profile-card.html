@@ -1,16 +1,28 @@
-<div class="item item-avatar">
-  <img ng-src={{currentFoodie.pictureUrl}}>
-  <h2>{{currentFoodie.firstName}} {{currentFoodie.lastName}}</h2>
-  <p>{{currentFoodie.headline}}</p>
-</div>
 
-<div class="item item-body">
-  <p ng-if="currentFoodie.lunchZip">
-    {{currentFoodie.bio}}
-  </p>
-  <p ng-if="!currentFoodie.lunchZip">
-    "Keep checking back!"
-  </p>
-  <button class="button button-assertive" ng-click="nextProfile()">No</button>
-  <button class="button button-balanced">Yes</button>
-</div>
+<li swing-card
+swing-on-throwout="console.log(eventName, eventObject)"
+swing-on-throwoutleft="console.log(eventName, eventObject)"
+swing-on-throwoutright="console.log(eventName, eventObject)"
+swing-on-throwin="console.log(eventName, eventObject)"
+swing-on-dragstart="console.log(eventName, eventObject)"
+swing-on-dragmove="console.log(eventName, eventObject)"
+swing-on-dragend="console.log(eventName, eventObject)">
+
+  <div class="item item-avatar">
+    <img ng-src={{currentFoodie.pictureUrl}}>
+    <h2>{{currentFoodie.firstName}} {{currentFoodie.lastName}}</h2>
+    <p>{{currentFoodie.headline}}</p>
+  </div>
+
+  <div class="item item-body">
+    <p ng-if="currentFoodie.lunchZip">
+      {{currentFoodie.bio}}
+    </p>
+    <p ng-if="!currentFoodie.lunchZip">
+      "Keep checking back!"
+    </p>
+    <button class="button button-assertive" ng-click="nextProfile()">No</button>
+    <button class="button button-balanced">Yes</button>
+  </div>
+
+</li>
