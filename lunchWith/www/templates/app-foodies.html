@@ -11,19 +11,20 @@
           swing-on-throwin="console.log(eventName, eventObject)"
           swing-on-dragstart="console.log(eventName, eventObject)"
           swing-on-dragmove="console.log(eventName, eventObject)"
-          swing-on-dragend="console.log(eventName, eventObject)">
+          swing-on-dragend="console.log(eventName, eventObject)"
+          ng-repeat="foodie in foodiesWithSameLunchZipList">
 
             <div class="item item-avatar">
-              <img ng-src={{currentFoodie.pictureUrl}}>
-              <h2>{{currentFoodie.firstName}} {{currentFoodie.lastName}}</h2>
-              <p>{{currentFoodie.headline}}</p>
+              <img ng-src={{foodie.pictureUrl}}>
+              <h2>{{foodie.firstName}} {{foodie.lastName}}</h2>
+              <p>{{foodie.headline}}</p>
             </div>
 
             <div class="item item-body">
-              <p ng-if="currentFoodie.lunchZip">
-                {{currentFoodie.bio}}
+              <p ng-if="foodie.lunchZip">
+                {{foodie.bio}}
               </p>
-              <p ng-if="!currentFoodie.lunchZip">
+              <p ng-if="!foodie.lunchZip">
                 "Keep checking back!"
               </p>
               <button class="button button-assertive" ng-click="nextProfile()">No</button>

@@ -48,8 +48,7 @@ angular.module('lunchWith.controllers', [])
 }])
 
 .controller('FoodiesCtrl',['$scope', 'lunchZipService', function($scope, lunchZipService) {
-  var counter = 0;
-  var foodieList = [
+  var foodieDB = [
     {
       "linkedinId": "jHi2RNpp23",
       "firstName": "Thuong",
@@ -85,18 +84,29 @@ angular.module('lunchWith.controllers', [])
     }
   ];
 
-  $scope.currentFoodie = foodieList[counter];
+  $scope.counter = 0;
+  $scope.foodiesWithSameLunchZipList = [];
+  $scope.currentFoodie = foodieDB[$scope.counter];
 
-  $scope.nextProfile = function() {
-    if (counter < foodieList.length){
-      counter++;
-      $scope.currentFoodie = foodieList[counter];
-      while (counter < foodieList.length && lunchZipService.getLunchZip() !== $scope.currentFoodie.lunchZip) {  // Advance to next foodie with matching lunchZip
-        counter++;
-        $scope.currentFoodie = foodieList[counter];
-      }
+  $scope.addFoodieToFoodiesWithSameLunchZipList = function() {
+    while ($scope.counter < foodieDB.length && lunchZipService.getLunchZip() !== $scope.currentFoodie.lunchZip) {  // Advance to next foodie with matching lunchZip
+      $scope.counter++;
+      $scope.currentFoodie = foodieDB[$scope.counter];
     }
+    $scope.foodiesWithSameLunchZipList.push($scope.currentFoodie)
+    $scope.counter++;
+    $scope.currentFoodie = foodieDB[$scope.counter];
   };
+
+  $scope.makeInitialSameLunchZipList = function(initialListSize){
+    var foodiesAddedSoFar = 0;
+    while ($scope.counter < foodieDB.length && foodiesAddedSoFar <= initialListSize) {  // Advance to next foodie with matching lunchZip
+      $scope.addFoodieToFoodiesWithSameLunchZipList();
+      foodiesAddedSoFar++;
+    }
+  }
+
+  $scope.makeInitialSameLunchZipList(10);
 
 }])
 
