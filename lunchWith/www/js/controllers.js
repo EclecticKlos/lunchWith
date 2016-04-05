@@ -1,7 +1,7 @@
 angular.module('lunchWith.controllers', [])
 
 
-.controller('LinkedinCtrl', ['$scope',"$cordovaOauth", "$ionicModal", "$cordovaKeyboard", "LinkedinAPIRequest", "lunchZipService", function($scope, $cordovaOauth, $ionicModal, $cordovaKeyboard, LinkedinAPIRequest, lunchZipService) {
+.controller('LinkedinCtrl', ['$scope',"$cordovaOauth", "$ionicModal", "$cordovaKeyboard", "LinkedinAPIRequest", "LunchZipService", function($scope, $cordovaOauth, $ionicModal, $cordovaKeyboard, LinkedinAPIRequest, LunchZipService) {
 
   $scope.lunchZip = { LunchZip: "Zip Code"};
 
@@ -40,14 +40,14 @@ angular.module('lunchWith.controllers', [])
     // post model to api
     // $scope.lunchZip
     console.log($scope.lunchZip.LunchZip);
-    lunchZipService.setLunchZip($scope.lunchZip.LunchZip)
+    LunchZipService.setLunchZip($scope.lunchZip.LunchZip)
     $scope.modal.hide();
     $scope.modal.remove();
   };
 
 }])
 
-.controller('FoodiesCtrl',['$scope', 'lunchZipService', function($scope, lunchZipService) {
+.controller('FoodiesCtrl',['$scope', 'LunchZipService', function($scope, LunchZipService) {
   var foodieDB = [
     {
       "linkedinId": "jHi2RNpp23",
@@ -89,7 +89,7 @@ angular.module('lunchWith.controllers', [])
   $scope.currentFoodie = foodieDB[$scope.indexCounter];
 
   $scope.addFoodieToFoodiesWithSameLunchZipList = function() {
-    while ($scope.indexCounter < foodieDB.length && lunchZipService.getLunchZip() !== $scope.currentFoodie.lunchZip) {  // Advance to next foodie with matching lunchZip
+    while ($scope.indexCounter < foodieDB.length && LunchZipService.getLunchZip() !== $scope.currentFoodie.lunchZip) {  // Advance to next foodie with matching lunchZip
       $scope.indexCounter++;
       $scope.currentFoodie = foodieDB[$scope.indexCounter];
     }

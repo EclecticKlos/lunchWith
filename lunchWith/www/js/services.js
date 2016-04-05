@@ -71,7 +71,7 @@ angular.module('lunchWith.services', [])
   }
 })
 
-.factory('lunchZipService', function() {
+.factory('LunchZipService', function() {
   var lunchZip = {LunchZip: "00000"};
 
   return {
