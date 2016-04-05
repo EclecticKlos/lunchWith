@@ -84,29 +84,33 @@ angular.module('lunchWith.controllers', [])
     }
   ];
 
-  $scope.counter = 0;
+  $scope.indexCounter = 0;
   $scope.foodiesWithSameLunchZipList = [];
-  $scope.currentFoodie = foodieDB[$scope.counter];
+  $scope.currentFoodie = foodieDB[$scope.indexCounter];
 
   $scope.addFoodieToFoodiesWithSameLunchZipList = function() {
-    while ($scope.counter < foodieDB.length && lunchZipService.getLunchZip() !== $scope.currentFoodie.lunchZip) {  // Advance to next foodie with matching lunchZip
-      $scope.counter++;
-      $scope.currentFoodie = foodieDB[$scope.counter];
+    while ($scope.indexCounter < foodieDB.length && lunchZipService.getLunchZip() !== $scope.currentFoodie.lunchZip) {  // Advance to next foodie with matching lunchZip
+      $scope.indexCounter++;
+      $scope.currentFoodie = foodieDB[$scope.indexCounter];
     }
     $scope.foodiesWithSameLunchZipList.push($scope.currentFoodie)
-    $scope.counter++;
-    $scope.currentFoodie = foodieDB[$scope.counter];
+    $scope.indexCounter++;
+    $scope.currentFoodie = foodieDB[$scope.indexCounter];
   };
 
   $scope.makeInitialSameLunchZipList = function(initialListSize){
     var foodiesAddedSoFar = 0;
-    while ($scope.counter < foodieDB.length && foodiesAddedSoFar <= initialListSize) {  // Advance to next foodie with matching lunchZip
+    while ($scope.indexCounter < foodieDB.length && foodiesAddedSoFar <= initialListSize) {  // Advance to next foodie with matching lunchZip
       $scope.addFoodieToFoodiesWithSameLunchZipList();
       foodiesAddedSoFar++;
     }
   }
 
   $scope.makeInitialSameLunchZipList(10);
+
+  $scope.remove = function (){
+    $scope.foodiesWithSameLunchZipList.splice($scope.foodiesWithSameLunchZipList.length -1, 1);
+  }
 
 }])
 
