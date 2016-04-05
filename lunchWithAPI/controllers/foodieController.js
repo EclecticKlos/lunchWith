@@ -15,7 +15,7 @@
 					response.status(404);
 					response.send('No profile found');
 				}
-			})
+			});
 		};
 
 		var get = function (request, response) {
