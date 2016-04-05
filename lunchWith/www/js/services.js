@@ -1,5 +1,66 @@
 angular.module('lunchWith.services', [])
 
+
+.factory('LinkedinAPIRequest', function($http) {
+
+  var getUserDataFromLinkedin = function(token) {
+    var reqUrl = "https://api.linkedin.com/v1/people/~?oauth2_access_token=" + token + "&format=json"
+
+    $http.get(reqUrl)
+    .then(function(response) {
+      console.log(response);
+      return response;
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+
+  };
+
+  return {
+    getUserDataFromLinkedin: getUserDataFromLinkedin
+  }
+})
+
+.factory('lunchZipService', function() {
+  var lunchZip = {LunchZip: "00000"};
+
+  return {
+    getLunchZip: function(){
+      return lunchZip.LunchZip;
+    },
+    setLunchZip: function(zipCode) {
+      lunchZip.LunchZip = zipCode;
+    }
+  }
+})
+
+.factory('ChronofyAPIRequestService', function($http) {
+  var getUserCalendarData = function(token) {
+    var options = {
+      access_token: "'" + token + "'",
+      tzid: 'America/Los_Angeles'
+    };
+
+    cronofy.readEvents(options)
+    .then(function (response) {
+        var events = response.events;
+        return events;
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+  };
+
+  return {
+    getUserCalendarData: getUserCalendarData
+  }
+})
+
+
+;
+
+
 // .factory('Chats', function() {
 //   // Might use a resource here that returns a JSON array
 
@@ -48,40 +109,3 @@ angular.module('lunchWith.services', [])
 //     }
 //   };
 // })
-
-.factory('LinkedinAPIRequest', function($http) {
-
-  var getUserDataFromLinkedin = function(token) {
-    var reqUrl = "https://api.linkedin.com/v1/people/~?oauth2_access_token=" + token + "&format=json"
-
-    $http.get(reqUrl)
-    .then(function(response) {
-      console.log(response);
-      return response;
-    })
-    .catch(function(error){
-      console.log(error);
-    })
-
-  };
-
-
-  return {
-    getUserDataFromLinkedin: getUserDataFromLinkedin
-  }
-})
-
-.factory('lunchZipService', function() {
-  var lunchZip = {LunchZip: "00000"};
-
-  return {
-    getLunchZip: function(){
-      return lunchZip.LunchZip;
-    },
-    setLunchZip: function(zipCode) {
-      lunchZip.LunchZip = zipCode;
-    }
-  }
-})
-
-;

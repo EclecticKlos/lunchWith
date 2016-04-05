@@ -114,6 +114,22 @@ angular.module('lunchWith.controllers', [])
 
 }])
 
+
+.controller('CalendarsCtrl', ['$scope', 'ChronofyAPIRequestService', function($scope, ChronofyAPIRequestService) {
+  $scope.userCalendarData;
+
+  $scope.getUserCalendarData = function() {
+
+    var CLIENTKEY = "nhBIbTqlDSOW563eTnS7Cg8z68xGznNj"
+
+    $scope.userCalendarData = ChronofyAPIRequestService.getUserCalendarData(CLIENTKEY);
+    debugger;
+  };
+}])
+
+
+
+
 // .controller('ChatsCtrl', function($scope, Chats) {
 //   // With the new view caching in Ionic, Controllers are only called
 //   // when they are recreated or on app start, instead of every page change.

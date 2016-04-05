@@ -44,7 +44,6 @@ angular.module('lunchWith', [
       }
     }
   })
-
   .state('app.foodies', {
     url: '/foodies',
     views: {
@@ -54,25 +53,24 @@ angular.module('lunchWith', [
       }
     }
   })
-
-  .state('app.chats', {
-      url: '/chats',
-      views: {
-        'app-chats': {
-          templateUrl: 'templates/app-chats.html',
-          controller: 'ChatsCtrl'
-        }
+  .state('app.calendars', {
+    url: '/calendars',
+    views: {
+      'app-calendars': {
+        templateUrl: 'templates/app-calendars.html',
+        controller: 'CalendarsCtrl'
       }
-    })
-    .state('app.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'app-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
+    }
+  })
+  .state('app.chat-detail', {
+    url: '/chats/:chatId',
+    views: {
+      'app-chats': {
+        templateUrl: 'templates/chat-detail.html',
+        controller: 'ChatDetailCtrl'
       }
-    })
+    }
+  })
   .state('app.account', {
     url: '/account',
     views: {
