@@ -1,36 +1,32 @@
 (function () {
-    'use strict';
+	'use strict';
 
-    var foodieController = function (Foodie) {
+	var foodieController = function (Foodie) {
+		// find the profile
+		var findFoodie = function(request, response, next) {
+			Foodie.findById(request.params.foodieId, function (error, foodie) {
+				if (error) {
+					response.status(500);
+					response.send(error);
+				} else if (foodie) {
+					request.foodie = foodie;
+					next();
+				} else {
+					response.status(404);
+					response.send('No profile found');
+				}
+			});
+		};
 
-        var post = function (req, res) {
-            var foodie = new Foodie(req.body);
+		var get = function (request, response) {
+			response.json(request.foodie);
+		};
 
-            console.log('POST foodie', foodie);
-        };
+		return {
+			findFoodie: findFoodie,
+			get: get
+		};
+	};
 
-        var get = function (req, res) {
-            var query = {};
-
-            if (req.query.lunchZip) {
-              query.lunchZip = req.query.lunchZip;
-            }
-
-            Foodie.find(query, function (err, foodies) {
-                if (err) {
-                    res.status(500).send(err);
-                } else {
-                    res.json(foodies);
-                }
-            });
-        };
-
-        return {
-          post: post,
-          get: get
-        }
-
-    };
-
-    module.exports = foodieController;
+	module.exports = foodieController;
 }());

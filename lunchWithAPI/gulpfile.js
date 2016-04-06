@@ -23,8 +23,7 @@
             env: {
                 PORT: 8000
             },
-            ignore: ['./node_modules/**'],
-            tasks: ['lint', 'test']
+            ignore: ['./node_modules/**']
         })
             .on('restart', function () {
                 console.log('Restarting...');
